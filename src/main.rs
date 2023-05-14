@@ -31,7 +31,7 @@ fn fizz_it(x: u32) -> String {
     if x % 5 == 0 {
         output_vec.insert(0, "buzz".to_string());
     }
-    if output_vec.len() == 0 {
+    if output_vec.is_empty() {
         output_vec.insert(0, x.to_string());
     }
     output_vec.join(" ")
