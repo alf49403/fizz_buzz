@@ -26,13 +26,13 @@ fn get_u32() -> u32 {
 fn fizz_it(x: u32) -> String {
     let mut output_vec: Vec<String> = vec![];
     if x % 3 == 0 {
-        output_vec.insert(0, "fizz".to_string());
+        output_vec.push("fizz".to_string());
     }
     if x % 5 == 0 {
-        output_vec.insert(0, "buzz".to_string());
+        output_vec.push("buzz".to_string());
     }
     if output_vec.is_empty() {
-        output_vec.insert(0, x.to_string());
+        output_vec.push(x.to_string());
     }
     output_vec.join(" ")
 }
