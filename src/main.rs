@@ -34,6 +34,5 @@ fn fizz_it(x: u32) -> String {
     if output_vec.len() == 0 {
         output_vec.insert(0, x.to_string());
     }
-    let output_text = output_vec.join(" ");
-    output_text
+    output_vec.join(" ")
 }
