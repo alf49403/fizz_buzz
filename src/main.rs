@@ -11,7 +11,7 @@ fn main() {
 fn get_u32() -> u32 {
     let mut number = String::new();
     loop {
-        if let Ok(_) = io::stdin().read_line(&mut number) {
+        if io::stdin().read_line(&mut number).is_ok() {
             match number.trim().parse::<u32>() {
                 Ok(x) => return x,
                 Err(_) => {
