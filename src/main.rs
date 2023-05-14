@@ -12,22 +12,25 @@ struct Args {
 fn main() {
     let args = Args::parse();
     for x in 1..=args.n {
-        println!("{}", fizz_it(x));
+        if let Some(s) = fizz_it(x) {
+            println!("{s}");
+        } else {
+            println!("{x}");
+        }
     }
 }
 
-fn fizz_it(x: u32) -> String {
-    let mut output_vec: Vec<&'static str> = vec![];
+fn fizz_it(x: u32) -> Option<&'static str> {
+    let mod5 = x % 5 == 0;
     if x % 3 == 0 {
-        output_vec.push("fizz");
-    }
-    if x % 5 == 0 {
-        output_vec.push("buzz");
-    }
-
-    if output_vec.is_empty() {
-        x.to_string()
+        if mod5 {
+            Some("fizz buzz")
+        } else {
+            Some("fizz")
+        }
+    } else if mod5 {
+        Some("buzz")
     } else {
-        output_vec.join(" ")
+        None
     }
 }
