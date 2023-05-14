@@ -1,25 +1,18 @@
-use std::io;
+use clap::Parser;
 
-fn main() {
-    println!("How far to go?");
-    let stop_at = get_u32();
-    for x in 1..=stop_at {
-        println!("{}", fizz_it(x));
-    }
+/// A Rust implementation of "Fizz Buzz"
+#[derive(Debug, Parser)]
+#[command(author, version, about)]
+struct Args {
+    /// How many numbers to show the "Fizz Buzz" output for
+    #[arg(short, default_value_t = 15)]
+    n: u32
 }
 
-fn get_u32() -> u32 {
-    let mut number = String::new();
-    loop {
-        if io::stdin().read_line(&mut number).is_ok() {
-            match number.trim().parse::<u32>() {
-                Ok(x) => return x,
-                Err(_) => {
-                    println!("Put a natural number in");
-                    number.clear();
-                },
-            }
-        }
+fn main() {
+    let args = Args::parse();
+    for x in 1..=args.n {
+        println!("{}", fizz_it(x));
     }
 }
 
