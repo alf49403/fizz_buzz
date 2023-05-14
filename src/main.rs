@@ -24,15 +24,17 @@ fn get_u32() -> u32 {
 }
 
 fn fizz_it(x: u32) -> String {
-    let mut output_vec: Vec<String> = vec![];
+    let mut output_vec: Vec<&'static str> = vec![];
     if x % 3 == 0 {
-        output_vec.push("fizz".to_string());
+        output_vec.push("fizz");
     }
     if x % 5 == 0 {
-        output_vec.push("buzz".to_string());
+        output_vec.push("buzz");
     }
+
     if output_vec.is_empty() {
-        output_vec.push(x.to_string());
+        x.to_string()
+    } else {
+        output_vec.join(" ")
     }
-    output_vec.join(" ")
 }
